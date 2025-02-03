@@ -1,0 +1,82 @@
+services:
+  test-api:
+    container_name: simplis-test.dev.api
+    env_file: .env
+    build:
+      context: api
+      dockerfile: devops/docker/Dockerfile
+      target: app
+      args:
+        - API_PORT=${API_PORT}
+        - CORS_ALLOW_ORIGIN=${CORS_ALLOW_ORIGIN}
+        - MYSQL_DATABASE=${MYSQL_DATABASE}
+        - MYSQL_HOST=${MYSQL_HOST}
+        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        - MYSQL_PORT=${MYSQL_PORT}
+        - MYSQL_USERNAME=${MYSQL_USERNAME}
+        - SALT_ANONYMOUS_ID=${SALT_ANONYMOUS_ID}
+        - TARGET_ENV=dev
+        - XDEBUG_ENABLED=1
+    ports:
+      - "${API_PORT}:8080"
+    depends_on:
+      test-db:
+        condition: 'service_healthy'
+    volumes:
+      - ./api:/var/www/html
+    networks:
+      - simplis-test
+
+  test-db:
+    container_name: simplis-test.dev.db
+    image: mariadb:10.3
+    env_file: .env
+    volumes  :
+      - mysql-test-data:/var/lib/mysql
+    #      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    ports:
+      - "3308:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    networks:
+      - simplis-test
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    restart: unless-stopped
+
+  test-phpmyadmin:
+    container_name: simplis-test.dev.phpmyadmin
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    ports:
+      - "8082:80"
+    links:
+      - test-db:db
+    networks:
+      - simplis-test
+
+#  test-app:
+#    container_name: simplis-test.dev.app
+#    env_file: .env
+#    build:
+#      context: app
+#      dockerfile: devops/docker/Dockerfile
+#    ports:
+#      - "4201:4200"
+#    depends_on:
+#      test-api:
+#        condition: 'service_started'
+#    volumes:
+#      - ./app:/usr/src/app
+#    networks:
+#      - simplis-test
+
+volumes:
+  mysql-test-data:
+
+networks:
+  simplis-test:
+    external: true
