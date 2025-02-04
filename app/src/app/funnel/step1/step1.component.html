@@ -1,0 +1,52 @@
+<div class="funnel-step">
+  <div class="progress-bar">
+    <div class="progress" style="width: 33%"></div>
+    <div class="step-indicators">
+      <div class="step active">1</div>
+      <div class="step">2</div>
+      <div class="step">3</div>
+    </div>
+  </div>
+
+  <h2>Informations complémentaires</h2>
+  <form [formGroup]="step1Form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Êtes-vous auto-entrepreneur ?</label>
+      <div class="radio-group">
+        <label>
+          <input type="radio" formControlName="isAutoEntrepreneur" [value]="true">
+          Oui
+        </label>
+        <label>
+          <input type="radio" formControlName="isAutoEntrepreneur" [value]="false">
+          Non
+        </label>
+      </div>
+      <div class="error-message" *ngIf="isFieldInvalid('isAutoEntrepreneur')">
+        Veuillez sélectionner une option
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="dateNaissance">Date de naissance *</label>
+      <input type="date" id="dateNaissance" formControlName="dateNaissance" required 
+             [class.invalid]="isFieldInvalid('dateNaissance')">
+      <div class="error-message" *ngIf="isFieldInvalid('dateNaissance')">
+        La date de naissance est requise
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="adresse">Adresse *</label>
+      <textarea id="adresse" formControlName="adresse" rows="3" required
+                [class.invalid]="isFieldInvalid('adresse')"></textarea>
+      <div class="error-message" *ngIf="isFieldInvalid('adresse')">
+        L'adresse est requise
+      </div>
+    </div>
+
+    <button type="submit" class="btn-primary" [disabled]="!step1Form.valid">
+      Continuer
+    </button>
+  </form>
+</div>

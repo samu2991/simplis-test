@@ -1,0 +1,13 @@
+// Couleurs principales
+$primary-color: #16cc77;
+$primary-hover: darken($primary-color, 10%);
+$primary-light: lighten($primary-color, 45%);
+
+// Couleurs d'état
+$error-color: #dc3545;
+$error-light: #fff8f8;
+
+// Couleurs neutres
+$border-color: #ccc;
+$text-color: #333;
+$disabled-color: #ccc;

@@ -1,0 +1,168 @@
+<div class="funnel-step">
+  <div class="progress-bar">
+    <div class="progress" style="width: 100%"></div>
+    <div class="step-indicators">
+      <div class="step completed">1</div>
+      <div class="step completed">2</div>
+      <div class="step active">3</div>
+    </div>
+  </div>
+
+  <h2>Nos plans d'assurance</h2>
+  <p>Choisissez le plan qui correspond le mieux à vos besoins</p>
+
+  <div class="plans-container">
+    <!-- Plan Essentiel -->
+    <div class="plan-card">
+      <div class="plan-header">
+        <h3>Essentiel</h3>
+        <p class="price">À partir de 119,88 €/an</p>
+      </div>
+      <div class="plan-features">
+        <ul>
+          <li>Responsabilité civile professionnelle</li>
+          <li>Protection juridique de base</li>
+          <li>Assistance 24/7</li>
+        </ul>
+      </div>
+      <button class="btn-secondary" (click)="selectPlan('essentiel')">Choisir ce plan</button>
+    </div>
+
+    <!-- Plan Premium -->
+    <div class="plan-card featured">
+      <div class="plan-header">
+        <div class="badge">Recommandé</div>
+        <h3>Premium</h3>
+        <p class="price">À partir de 239,88 €/an</p>
+      </div>
+      <div class="plan-features">
+        <ul>
+          <li>Tout ce qui est inclus dans Essentiel</li>
+          <li>Protection étendue des biens professionnels</li>
+          <li>Couverture cyber-risques</li>
+          <li>Protection juridique avancée</li>
+        </ul>
+      </div>
+      <button class="btn-primary" (click)="selectPlan('premium')">Choisir ce plan</button>
+    </div>
+
+    <!-- Plan Elite -->
+    <div class="plan-card">
+      <div class="plan-header">
+        <h3>Elite</h3>
+        <p class="price">À partir de 334,80 €/an</p>
+      </div>
+      <div class="plan-features">
+        <ul>
+          <li>Tout ce qui est inclus dans Premium</li>
+          <li>Couverture internationale</li>
+          <li>Protection maximale</li>
+          <li>Service de conciergerie dédié</li>
+        </ul>
+      </div>
+      <button class="btn-secondary" (click)="selectPlan('elite')">Choisir ce plan</button>
+    </div>
+  </div>
+
+  <div class="button-group">
+    <button type="button" class="btn-text" (click)="onPrevious()">Retour</button>
+  </div>
+</div>
+
+<style>
+.plans-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.plan-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-5px);
+}
+
+.plan-card.featured {
+  border: 2px solid #2a5298;
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: #2a5298;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+}
+
+.plan-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.plan-header h3 {
+  margin-bottom: 0.5rem;
+  color: #2a5298;
+}
+
+.price {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.plan-features {
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+}
+
+.plan-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.plan-features li {
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.plan-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #2a5298;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: #666;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.btn-text:hover {
+  color: #2a5298;
+}
+</style>
