@@ -1,11 +1,10 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 
 .contact__content {
   display: flex;
   flex-direction: row;
   padding: 60px 0;
   background-color: aliceblue;
-  box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .contact__person {
@@ -44,7 +43,7 @@
   padding: 20px;
   background: #f8f9fa;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .contactForm {
@@ -53,7 +52,7 @@
   padding: 40px;
   background: white;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .contact__form {
@@ -70,14 +69,16 @@
   font-weight: 500;
 }
 
-.contact input, .contact select {
+.contact input,
+.contact select {
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 16px;
 }
 
-.contact input:focus, .contact select:focus {
+.contact input:focus,
+.contact select:focus {
   outline: none;
   border-color: $primary-color;
   box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
@@ -123,9 +124,8 @@
     font-size: 1em;
   }
 
-  .contactForm{
+  .contactForm {
     padding: 20px;
     margin: 10px;
   }
-
 }

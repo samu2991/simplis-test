@@ -1,56 +1,46 @@
-<header class="header">
-  <div class="header__container">
-    <img
-      class="header__logo"
-      src="./assets/simplis-logo-B100.svg"
-      alt="Simplis Logo"
-    />
-    <p class="header__tagline">
-      Votre partenaire de confiance pour l'assurance professionnelle
-    </p>
-  </div>
-</header>
-<main class="main">
-  <router-outlet />
-</main>
-<footer class="footer">
-  <div class="footer__socialNetworks">
-    <div class="footer__socialNetwork">
-      <a href="#" target="_blank">
+<div class="app-container">
+  <header class="header" [class.header--collapsed]="isHeaderCollapsed">
+    <div class="header__container">
+      <div class="header__content">
         <img
-          class="footer__iconSize"
-          src="./assets/facebook.svg"
-          alt="facebook"
+          class="header__logo"
+          src="./assets/simplis-logo-B100.svg"
+          alt="Simplis Logo"
         />
-      </a>
+        <p class="header__tagline" [class.header__tagline--hidden]="isHeaderCollapsed">
+          Votre partenaire de confiance pour l'assurance professionnelle
+        </p>
+      </div>
     </div>
-    <div class="footer__socialNetwork">
-      <a href="#" target="_blank">
-        <img
-          class="footer__iconSize"
-          src="./assets/instagram.svg"
-          alt="instagram"
-        />
-      </a>
+  </header>
+
+  <main class="main">
+    <router-outlet />
+  </main>
+
+  <footer class="footer">
+    <div class="footer__socialNetworks">
+      <div class="footer__socialNetwork">
+        <a href="#" target="_blank">
+          <img class="footer__iconSize" src="./assets/facebook.svg" alt="facebook" />
+        </a>
+      </div>
+      <div class="footer__socialNetwork">
+        <a href="#" target="_blank">
+          <img class="footer__iconSize" src="./assets/instagram.svg" alt="instagram" />
+        </a>
+      </div>
+      <div class="footer__socialNetwork">
+        <a href="#" target="_blank">
+          <img class="footer__iconSize" src="./assets/youtube.svg" alt="youtube" />
+        </a>
+      </div>
+      <div class="footer__socialNetwork">
+        <a href="#" target="_blank">
+          <img class="footer__iconSize" src="./assets/linkedin.svg" alt="linkedin" />
+        </a>
+      </div>
     </div>
-    <div class="footer__socialNetwork">
-      <a href="#" target="_blank">
-        <img
-          class="footer__iconSize"
-          src="./assets/youtube.svg"
-          alt="youtube"
-        />
-      </a>
-    </div>
-    <div class="footer__socialNetwork">
-      <a href="#" target="_blank">
-        <img
-          class="footer__iconSize"
-          src="./assets/linkedin.svg"
-          alt="linkedin"
-        />
-      </a>
-    </div>
-  </div>
-  <div class="footer__reserved">© 2025 Simplis. Tous droits reservés</div>
-</footer>
+    <div class="footer__reserved"> 2025 Simplis. Tous droits reservés</div>
+  </footer>
+</div>
