@@ -1,125 +1,56 @@
-<!-- Page de présentation -->
-<div class="landing-page">
-    <!-- En-tête -->
-    <header class="header">
-      <div class="container">
-        <img src="./assets/simplis-logo-B100.svg" alt="Simplis Logo" class="logo">
-        <p class="tagline">Votre partenaire de confiance pour l'assurance professionnelle</p>
-      </div>
-    </header>
-
-    <div class="landing-page__content">
-       
-     <img class="presentation__person" src="./assets/vecteezy_person-working-office_502289.svg" alt="Personne travaillant au bureau">
-        <section class="contact-form">
-      
-    
-            <div class="contact-form__header">
-                <h2>Commencez votre simulation</h2>
-            </div>
-            <div class="contact-form__body">
-            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="form">
-              <div class="form-group">
-                <label for="nom">Nom *</label>
-                <input type="text" id="nom" formControlName="nom" required 
-                       [class.invalid]="isFieldInvalid('nom')">
-                <div class="error-message">
-                    <p *ngIf="isFieldInvalid('nom')">
-                        {{ getErrorMessage('nom') }}
-                    </p>
-                </div>
-              </div>
-    
-              <div class="form-group">
-                <label for="prenom">Prénom *</label>
-                <input type="text" id="prenom" formControlName="prenom" required
-                       [class.invalid]="isFieldInvalid('prenom')">
-                <div class="error-message">
-                    <p *ngIf="isFieldInvalid('prenom')">
-                        {{ getErrorMessage('prenom') }}
-                    </p>
-                </div>
-              </div>
-    
-              <div class="form-group">
-                <label for="telephone">Téléphone *</label>
-                <input type="tel" id="telephone" formControlName="telephone" required
-                       [class.invalid]="isFieldInvalid('telephone')"
-                       placeholder="Ex: 06 12 34 56 78">
-                <div class="error-message">
-                    <p *ngIf="isFieldInvalid('telephone')">
-                        {{ getErrorMessage('telephone') }}
-                    </p>
-                </div>
-              </div>
-    
-              <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" id="email" formControlName="email" required
-                       [class.invalid]="isFieldInvalid('email')">
-                <div class="error-message">
-                    <p *ngIf="isFieldInvalid('email')">
-                        {{ getErrorMessage('email') }}
-                    </p>
-                </div>
-              </div>
-    
-              <div class="form-group">
-                <label for="activite">Votre activité *</label>
-                <select id="activite" formControlName="activite" required
-                        [class.invalid]="isFieldInvalid('activite')">
-                  <option value="">Sélectionnez votre activité</option>
-                  <option value="commerce">Commerce d'objets d'art</option>
-                  <option value="decoration">Créations de décorations en fleurs artificielles</option>
-                  <option value="gravure">Gravure sur métaux</option>
-                  <option value="guide">Guide touristique</option>
-                  <option value="communication">Agence et conseil en communication</option>
-                </select>
-                <div class="error-message">
-                    <p *ngIf="isFieldInvalid('activite')">
-                        {{ getErrorMessage('activite') }}
-                    </p>
-                </div>
-              </div>
-    
-              <button type="button" class="btn-primary" [disabled]="formSubmitted && !contactForm.valid">
-                Commencer ma simulation
-              </button>
-            </form>
- 
-            </div>
-          </section>
-
-    </div>
-  
-    <!-- Section principale -->
-    <main class="main-content">
-      <div class="container">
-        <!-- Présentation -->
-        <section class="presentation">
-          <h2>Simplifiez votre assurance professionnelle</h2>
-          <p>Chez Simplis, nous comprenons vos besoins spécifiques en matière d'assurance. Notre mission est de vous offrir une protection adaptée à votre activité professionnelle, avec un processus simple et transparent.</p>
-          
-          <div class="features">
-            <div class="feature">
-              <h3>Solution sur mesure</h3>
-              <p>Des offres adaptées à votre activité</p>
-            </div>
-            <div class="feature">
-              <h3>Accompagnement personnalisé</h3>
-              <p>Une équipe d'experts à votre écoute</p>
-            </div>
-            <div class="feature">
-              <h3>Devis rapide</h3>
-              <p>Obtenez votre simulation en quelques minutes</p>
-            </div>
-          </div>
-        </section>
-  
-        <!-- Formulaire de contact -->
-
-      </div>
-    </main>
+<header class="header">
+  <div class="header__container">
+    <img
+      class="header__logo"
+      src="./assets/simplis-logo-B100.svg"
+      alt="Simplis Logo"
+    />
+    <p class="header__tagline">
+      Votre partenaire de confiance pour l'assurance professionnelle
+    </p>
   </div>
-  
+</header>
+<main class="main">
   <router-outlet />
+</main>
+<footer class="footer">
+  <div class="footer__socialNetworks">
+    <div class="footer__socialNetwork">
+      <a href="#" target="_blank">
+        <img
+          class="footer__iconSize"
+          src="./assets/facebook.svg"
+          alt="facebook"
+        />
+      </a>
+    </div>
+    <div class="footer__socialNetwork">
+      <a href="#" target="_blank">
+        <img
+          class="footer__iconSize"
+          src="./assets/instagram.svg"
+          alt="instagram"
+        />
+      </a>
+    </div>
+    <div class="footer__socialNetwork">
+      <a href="#" target="_blank">
+        <img
+          class="footer__iconSize"
+          src="./assets/youtube.svg"
+          alt="youtube"
+        />
+      </a>
+    </div>
+    <div class="footer__socialNetwork">
+      <a href="#" target="_blank">
+        <img
+          class="footer__iconSize"
+          src="./assets/linkedin.svg"
+          alt="linkedin"
+        />
+      </a>
+    </div>
+  </div>
+  <div class="footer__reserved">© 2025 Simplis. Tous droits reservés</div>
+</footer>

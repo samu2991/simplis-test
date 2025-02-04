@@ -1,0 +1,115 @@
+<div class="contact">
+  <!-- Section principale -->
+  <div class="contact__content">
+    <img
+      class="contact__person"
+      src="./assets/vecteezy_person-working-office_502289.svg"
+      alt="Personne travaillant au bureau"
+    />
+    <section class="contactForm">
+      <div class="contactForm__header">
+        <h2>Commencez votre simulation</h2>
+      </div>
+      <div class="contactForm__body">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="form">
+          <div class="form-group">
+            <label for="nom">Nom *</label>
+            <input
+              type="text"
+              id="nom"
+              formControlName="nom"
+              required
+              [class.invalid]="isFieldInvalid('nom')"
+            />
+            <div class="error-message">
+              <p *ngIf="isFieldInvalid('nom')">
+                {{ getErrorMessage("nom") }}
+              </p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prenom">Prénom *</label>
+            <input
+              type="text"
+              id="prenom"
+              formControlName="prenom"
+              required
+              [class.invalid]="isFieldInvalid('prenom')"
+            />
+            <div class="error-message">
+              <p *ngIf="isFieldInvalid('prenom')">
+                {{ getErrorMessage("prenom") }}
+              </p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="telephone">Téléphone *</label>
+            <input
+              type="tel"
+              id="telephone"
+              formControlName="telephone"
+              required
+              [class.invalid]="isFieldInvalid('telephone')"
+              placeholder="Ex: 06 12 34 56 78"
+            />
+            <div class="error-message">
+              <p *ngIf="isFieldInvalid('telephone')">
+                {{ getErrorMessage("telephone") }}
+              </p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              required
+              [class.invalid]="isFieldInvalid('email')"
+            />
+            <div class="error-message">
+              <p *ngIf="isFieldInvalid('email')">
+                {{ getErrorMessage("email") }}
+              </p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="activite">Votre activité *</label>
+            <select
+              id="activite"
+              formControlName="activite"
+              required
+              [class.invalid]="isFieldInvalid('activite')"
+            >
+              <option value="">Sélectionnez votre activité</option>
+              <option value="commerce">Commerce d'objets d'art</option>
+              <option value="decoration">
+                Créations de décorations en fleurs artificielles
+              </option>
+              <option value="gravure">Gravure sur métaux</option>
+              <option value="guide">Guide touristique</option>
+              <option value="communication">
+                Agence et conseil en communication
+              </option>
+            </select>
+            <div class="error-message">
+              <p *ngIf="isFieldInvalid('activite')">
+                {{ getErrorMessage("activite") }}
+              </p>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary" [disabled]="isSubmitting">
+            <span *ngIf="!isSubmitting">Commencer ma simulation</span>
+            <span *ngIf="isSubmitting">Chargement...</span>
+          </button>
+        </form>
+      </div>
+    </section>
+  </div>
+  <!-- Fin de la Section principale -->
+</div>
