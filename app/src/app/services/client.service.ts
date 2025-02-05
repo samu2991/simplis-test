@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 export interface ClientInfo {
   firstName: string;
@@ -27,6 +29,10 @@ export class ClientService {
 
   clientData$ = this.clientData.asObservable();
 
+  constructor(private http: HttpClient) {
+    console.log('ClientService initialized');
+  }
+
   updateClientData(data: Partial<ClientInfo>) {
     this.clientData.next({
       ...this.clientData.value,
@@ -38,12 +44,32 @@ export class ClientService {
     return this.clientData.value;
   }
 
-  // Simuler un appel API pour sauvegarder les données
+  // Appel API pour sauvegarder les données client
+  // async saveClientData(): Promise<any> {
+  //   try {
+  //     console.log("Envoi des données au serveur:", this.clientData.value);
+  //     console.log("URL de l'API:", `${environment.apiUrl}/api/customers`);
+      
+  //     const response = await this.http.post(
+  //       `${environment.apiUrl}/api/customers`,
+  //       this.clientData.value
+  //     ).toPromise();
+      
+  //     console.log('Client enregistré avec succès:', response);
+  //     return response;
+  //   } catch (error) {
+  //     console.error('Erreur lors de l\'enregistrement du client:', error);
+  //     throw error;
+  //   }
+  // }
+
+
+      // Simuler un appel API pour sauvegarder les données
   saveClientData(): Promise<void> {
     return new Promise((resolve) => {
       console.log('Saving client data:', this.clientData.value);
-      // Ici, vous implementerez l'appel réel à votre API
+      // Ici appel réel API
       setTimeout(resolve, 1000);
     });
-  }
+}
 }
