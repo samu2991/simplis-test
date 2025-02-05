@@ -1,15 +1,25 @@
 <div class="funnel-step">
   <div class="progress-bar">
-    <div class="progress" style="width: 33%"></div>
-    <div class="step-indicators">
-      <div class="step active">1</div>
-      <div class="step">2</div>
-      <div class="step">3</div>
+    <div class="progress-line">
+      <div class="line"></div>
+    </div>
+    <div class="steps">
+      <div class="step completed">
+        <div class="step-circle">1</div>
+        <div class="step-label">Contact</div>
+      </div>
+      <div class="step active">
+        <div class="step-circle">2</div>
+        <div class="step-label">Informations</div>
+      </div>
+      <div class="step">
+        <div class="step-circle">3</div>
+        <div class="step-label">Devis</div>
+      </div>
     </div>
   </div>
 
   <div class="step__Form">
-
     <h2>Informations complémentaires</h2>
     <form [formGroup]="step1Form" (ngSubmit)="onSubmit()">
       <div class="form-group">
@@ -46,13 +56,36 @@
           L'adresse est requise
         </div>
       </div>
+
+      <div class="form-group">
+        <label for="activite">Votre activité *</label>
+        <select
+          id="activite"
+          formControlName="activite"
+          required
+          [class.invalid]="isFieldInvalid('activite')"
+        >
+          <option value="">Sélectionnez votre activité</option>
+          <option value="commerce">Commerce d'objets d'art</option>
+          <option value="decoration">
+            Créations de décorations en fleurs artificielles
+          </option>
+          <option value="gravure">Gravure sur métaux</option>
+          <option value="guide">Guide touristique</option>
+          <option value="communication">
+            Agence et conseil en communication
+          </option>
+        </select>
+        <div class="error-message">
+          <p *ngIf="isFieldInvalid('activite')">
+            Veuillez sélectionner une option
+          </p>
+        </div>
+      </div>
   
       <button type="submit" class="btn-primary" [disabled]="!step1Form.valid">
         Continuer
       </button>
     </form>
-
-  </div> 
-
-
+  </div>
 </div>

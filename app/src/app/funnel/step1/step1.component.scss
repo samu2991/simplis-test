@@ -1,4 +1,103 @@
-@import '../../../styles/variables';
+@import "../../../styles/variables";
+
+.funnel-step {
+  padding: 2rem;
+}
+
+.progress-bar {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  padding: 1rem 0;
+  position: relative;
+
+  .progress-line {
+    position: absolute;
+    top: 35px;
+    left: 40px;
+    right: 40px;
+    z-index: 1;
+
+    .line {
+      height: 2px;
+      background: #e0e0e0;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 50%;
+        background: $primary-color;
+        transition: width 0.3s ease;
+      }
+    }
+  }
+
+  .steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      position: relative;
+      width: 80px;
+      text-transform: uppercase;
+      font-weight: lighter;
+
+      .step-circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: white;
+        border: 2px solid #e0e0e0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: #757575;
+        transition: all 0.3s ease;
+      }
+
+      .step-label {
+        font-size: 0.875rem;
+        color: #757575;
+        text-align: center;
+        font-weight: 500;
+      }
+
+      &.completed {
+        .step-circle {
+          background: $primary-color;
+          border-color: $primary-color;
+          color: white;
+        }
+
+        .step-label {
+          color: black;
+        }
+      }
+
+      &.active {
+        .step-circle {
+          border-color: $primary-color;
+          color: $primary-color;
+          box-shadow: 0 0 0 4px rgba($primary-color, 0.1);
+        }
+
+        .step-label {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
 
 .step__Form {
   max-width: 600px;
@@ -7,6 +106,12 @@
   background: white;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    margin-bottom: 2rem;
+    color: $text-color;
+    font-weight: 600;
+  }
 }
 
 .form-group {
@@ -19,19 +124,20 @@
     color: $text-color;
   }
 
-  input, textarea {
+  input,
+  textarea {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid $border-color;
     border-radius: 4px;
     transition: all 0.3s ease;
-    
+
     &:focus {
       outline: none;
       border-color: $primary-color;
       box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
     }
-    
+
     &.invalid {
       border-color: $error-color;
       background-color: $error-light;
@@ -83,51 +189,5 @@
 
   &:hover:not(:disabled) {
     background-color: $primary-hover;
-  }
-}
-
-// Style de la barre de progression
-.progress-bar {
-  background-color: $primary-light;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-  position: relative;
-  height: 8px;
-  overflow: hidden;
-
-  .progress {
-    background-color: $primary-color;
-    height: 100%;
-    transition: width 0.3s ease;
-  }
-
-  .step-indicators {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-
-    .step {
-      width: 24px;
-      height: 24px;
-      background-color: white;
-      border: 2px solid $border-color;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: bold;
-      color: $text-color;
-      transition: all 0.3s ease;
-
-      &.active {
-        background-color: $primary-color;
-        border-color: $primary-color;
-        color: white;
-      }
-    }
   }
 }

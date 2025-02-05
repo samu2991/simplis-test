@@ -23,7 +23,7 @@ export class Step1Component implements OnInit {
     this.step1Form = this.fb.group({
       isAutoEntrepreneur: [null, Validators.required],
       dateNaissance: ['', Validators.required],
-      adresse: ['', Validators.required]
+      activite: ['', [Validators.required]]
     });
   }
 

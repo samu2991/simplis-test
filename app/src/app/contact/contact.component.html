@@ -77,28 +77,21 @@
             </div>
           </div>
 
+
           <div class="form-group">
-            <label for="activite">Votre activité *</label>
-            <select
-              id="activite"
-              formControlName="activite"
+            <label for="adresse">Adresse *</label>
+            <textarea
+              type="adresse"
+              id="adresse"
+              formControlName="adresse"
+              rows="3"
               required
-              [class.invalid]="isFieldInvalid('activite')"
+              [class.invalid]="isFieldInvalid('adresse')"
             >
-              <option value="">Sélectionnez votre activité</option>
-              <option value="commerce">Commerce d'objets d'art</option>
-              <option value="decoration">
-                Créations de décorations en fleurs artificielles
-              </option>
-              <option value="gravure">Gravure sur métaux</option>
-              <option value="guide">Guide touristique</option>
-              <option value="communication">
-                Agence et conseil en communication
-              </option>
-            </select>
+            </textarea>
             <div class="error-message">
-              <p *ngIf="isFieldInvalid('activite')">
-                {{ getErrorMessage("activite") }}
+              <p *ngIf="isFieldInvalid('adresse')">
+                {{ getErrorMessage("adresse") }}
               </p>
             </div>
           </div>
