@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 export interface ClientInfo {
-  nom: string;
-  prenom: string;
-  telephone: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
   email: string;
-  activite: string;
+  activite?: string;
   isAutoEntrepreneur?: boolean;
   dateNaissance?: string;
   adresse?: string;
@@ -19,12 +19,10 @@ export interface ClientInfo {
 })
 export class ClientService {
   private clientData = new BehaviorSubject<ClientInfo>({
-    nom: '',
-    prenom: '',
-    telephone: '',
-    email: '',
-    activite: '',
-    selectedPlan: ''
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    email: ''
   });
 
   clientData$ = this.clientData.asObservable();

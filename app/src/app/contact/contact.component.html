@@ -13,50 +13,50 @@
       <div class="contactForm__body">
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="form">
           <div class="form-group">
-            <label for="nom">Nom *</label>
+            <label for="firstName">Nom *</label>
             <input
               type="text"
-              id="nom"
-              formControlName="nom"
+              id="firstName"
+              formControlName="firstName"
               required
-              [class.invalid]="isFieldInvalid('nom')"
+              [class.invalid]="isFieldInvalid('firstName')"
             />
             <div class="error-message">
-              <p *ngIf="isFieldInvalid('nom')">
-                {{ getErrorMessage("nom") }}
+              <p *ngIf="isFieldInvalid('firstName')">
+                {{ getErrorMessage("firstName") }}
               </p>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="prenom">Prénom *</label>
+            <label for="lastName">Prénom *</label>
             <input
               type="text"
-              id="prenom"
-              formControlName="prenom"
+              id="lastName"
+              formControlName="lastName"
               required
-              [class.invalid]="isFieldInvalid('prenom')"
+              [class.invalid]="isFieldInvalid('lastName')"
             />
             <div class="error-message">
-              <p *ngIf="isFieldInvalid('prenom')">
-                {{ getErrorMessage("prenom") }}
+              <p *ngIf="isFieldInvalid('lastName')">
+                {{ getErrorMessage("lastName") }}
               </p>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="telephone">Téléphone *</label>
+            <label for="phoneNumber">Téléphone *</label>
             <input
               type="tel"
-              id="telephone"
-              formControlName="telephone"
+              id="phoneNumber"
+              formControlName="phoneNumber"
               required
-              [class.invalid]="isFieldInvalid('telephone')"
+              [class.invalid]="isFieldInvalid('phoneNumber')"
               placeholder="Ex: 06 12 34 56 78"
             />
             <div class="error-message">
-              <p *ngIf="isFieldInvalid('telephone')">
-                {{ getErrorMessage("telephone") }}
+              <p *ngIf="isFieldInvalid('phoneNumber')">
+                {{ getErrorMessage("phoneNumber") }}
               </p>
             </div>
           </div>
@@ -77,24 +77,6 @@
             </div>
           </div>
 
-
-          <div class="form-group">
-            <label for="adresse">Adresse *</label>
-            <textarea
-              type="adresse"
-              id="adresse"
-              formControlName="adresse"
-              rows="3"
-              required
-              [class.invalid]="isFieldInvalid('adresse')"
-            >
-            </textarea>
-            <div class="error-message">
-              <p *ngIf="isFieldInvalid('adresse')">
-                {{ getErrorMessage("adresse") }}
-              </p>
-            </div>
-          </div>
 
           <button type="submit" class="btn-primary" [disabled]="isSubmitting">
             <span *ngIf="!isSubmitting">Commencer ma simulation</span>

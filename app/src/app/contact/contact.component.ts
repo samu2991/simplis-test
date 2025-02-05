@@ -22,12 +22,10 @@ export class ContactComponent {
     private clientService: ClientService
   ) {
     this.contactForm = this.fb.group({
-      nom: ['', [Validators.required, Validators.minLength(2)]],
-      prenom: ['', [Validators.required, Validators.minLength(2)]],
-      telephone: ['', [Validators.required, Validators.pattern(/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/)]],
+      firstName: ['', [Validators.required, Validators.minLength(2)]],
+      lastName: ['', [Validators.required, Validators.minLength(2)]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/)]],
       email: ['', [Validators.required, Validators.email]],
-      adresse: ['', [Validators.required]],
-    
     });
   }
 
@@ -71,6 +69,8 @@ export class ContactComponent {
       try {
         // Mettre à jour les données du client
         await this.clientService.updateClientData(this.contactForm.value);
+        await this.clientService.saveClientData();
+         
         
         // Naviguer vers l'étape 1
         await this.router.navigate(['/funnel/step1']);
