@@ -28,21 +28,21 @@
           <label>
             <input
               type="radio"
-              formControlName="isAutoEntrepreneur"
-              [value]="true"
+              formControlName="eligibleLegalForm"
+              [value]="'AUTO_ENTREPRENEUR'"
             />
             Oui
           </label>
           <label>
             <input
               type="radio"
-              formControlName="isAutoEntrepreneur"
-              [value]="false"
+              formControlName="eligibleLegalForm"
+              [value]="'any'"
             />
             Non
           </label>
         </div>
-        <div class="error-message" *ngIf="isFieldInvalid('isAutoEntrepreneur')">
+        <div class="error-message" *ngIf="isFieldInvalid('eligibleLegalForm')">
           Veuillez sélectionner une option
         </div>
       </div>
@@ -83,12 +83,12 @@
       </div>
 
       <div class="form-group">
-        <label for="projectedTurnover">Chiffre d'affaires * </label>
+        <label for="maxProjectedTurnover">Chiffre d'affaires * </label>
         <select
-          id="projectedTurnover"
-          formControlName="projectedTurnover"
+          id="maxProjectedTurnover"
+          formControlName="maxProjectedTurnover"
           required
-          [class.invalid]="isFieldInvalid('projectedTurnover')"
+          [class.invalid]="isFieldInvalid('maxProjectedTurnover')"
         >
           <option value="">Sélectionnez votre Chiffre d'affaires</option>
           <option value="150 000">1 € - 150 000 €</option>
@@ -98,7 +98,7 @@
           <option value="5 000 000">2 000 000 € - 5 000 000€</option>
         </select>
         <div class="error-message">
-          <p *ngIf="isFieldInvalid('projectedTurnover')">
+          <p *ngIf="isFieldInvalid('maxProjectedTurnover')">
             Veuillez sélectionner une option
           </p>
         </div>
@@ -110,7 +110,7 @@
           <label>
             <input
               type="radio"
-              formControlName="isFranceOnly"
+              formControlName="businessLocation"
               [value]="'france'"
             />
             Oui
@@ -118,13 +118,13 @@
           <label>
             <input
               type="radio"
-              formControlName="isFranceOnly"
+              formControlName="businessLocation"
               [value]="'world'"
             />
             Non
           </label>
         </div>
-        <div class="error-message" *ngIf="isFieldInvalid('isFranceOnly')">
+        <div class="error-message" *ngIf="isFieldInvalid('businessLocation')">
           Veuillez sélectionner une option
         </div>
       </div>

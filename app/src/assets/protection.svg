@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F5F7FA" x="0" y="0" width="800" height="600"/>
+        <path d="M400,150 L550,250 L550,450 C550,450 475,500 400,500 C325,500 250,450 250,450 L250,250 L400,150 Z" 
+              fill="#5145FF" opacity="0.2"/>
+        <path d="M400,200 L500,275 L500,425 C500,425 450,460 400,460 C350,460 300,425 300,425 L300,275 L400,200 Z" 
+              fill="#16CC77" opacity="0.3"/>
+        <path d="M400,250 L450,300 L450,400 C450,400 425,420 400,420 C375,420 350,400 350,400 L350,300 L400,250 Z" 
+              fill="#5145FF" opacity="0.4"/>
+    </g>
+</svg>

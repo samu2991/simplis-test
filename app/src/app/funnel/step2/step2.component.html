@@ -1,0 +1,47 @@
+<div class="step-container">
+  <div class="content">
+    <h1>Sélectionnez votre assurance</h1>
+    
+    <!-- Loading spinner -->
+    <div class="loading-container" *ngIf="loading">
+      <div class="spinner"></div>
+      <p>Chargement des produits...</p>
+    </div>
+
+    <!-- Error message -->
+    <div class="error-message" *ngIf="error">
+      {{ error }}
+    </div>
+
+    <!-- Products grid -->
+    <div class="products-grid" *ngIf="!loading && !error && products.length > 0">
+      <div class="product-card" *ngFor="let product of products" (click)="selectProduct(product)">
+        <div class="card-header">
+          <h3>{{ product.name }}</h3>
+          <span class="insurer">{{ product.insurer }}</span>
+        </div>
+        
+        <div class="card-body">
+          <div class="price">{{ product.price }} €</div>
+          <div class="coverage">
+            <strong>Zone de couverture :</strong>
+            <span>{{ product.businessLocation === 'france' ? 'France' : 'International' }}</span>
+          </div>
+          <div class="turnover">
+            <strong>CA max couvert :</strong>
+            <span>{{ product.maxProjectedTurnover }} €</span>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <button class="select-button">Sélectionner</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- No products found -->
+    <div class="no-products" *ngIf="!loading && !error && products.length === 0">
+      <p>Aucun produit ne correspond à vos critères.</p>
+    </div>
+  </div>
+</div>

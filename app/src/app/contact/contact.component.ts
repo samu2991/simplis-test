@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ClientService } from '../services/client.service';
+import { finalize, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contact',
@@ -56,9 +57,7 @@ export class ContactComponent {
     return '';
   }
 
-  async onSubmit() {
-    this.formSubmitted = true;
-    
+  onSubmit() {
     // Marquer tous les champs comme touchés pour déclencher l'affichage des erreurs
     Object.keys(this.contactForm.controls).forEach(key => {
       const control = this.contactForm.get(key);
@@ -67,20 +66,19 @@ export class ContactComponent {
 
     if (this.contactForm.valid) {
       this.isSubmitting = true;
-      try {
-        // Mettre à jour les données du client
-        await this.clientService.updateClientData(this.contactForm.value);
-        await this.clientService.saveClientData();
-         
-        
-        // Naviguer vers l'étape 1
-        await this.router.navigate(['/funnel/step1']);
-      } catch (error) {
-        console.error('Erreur lors de la soumission du formulaire:', error);
-        // Ici vous pouvez ajouter une gestion d'erreur plus sophistiquée si nécessaire
-      } finally {
-        this.isSubmitting = false;
-      }
+      
+      // Mettre à jour les données du client et sauvegarder
+      this.clientService.updateClientData(this.contactForm.value);
+      this.clientService.saveClientData().pipe(
+        switchMap(() => this.router.navigate(['/funnel/step1'])),
+        finalize(() => {
+          this.isSubmitting = false;
+        })
+      ).subscribe({
+        error: (error) => {
+          console.error('Erreur lors de la soumission du formulaire:', error);
+        }
+      });
     }
   }
 }

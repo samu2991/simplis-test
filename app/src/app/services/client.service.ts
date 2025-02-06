@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, catchError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
@@ -27,12 +27,11 @@ export class ClientService {
     address: '',
   });
 
-  clientData$ = this.clientData.asObservable();
-
   constructor(private http: HttpClient) {
-    console.log('ClientService initialized');
   }
 
+
+  // Mettre à jour les données du client
   updateClientData(data: Partial<ClientInfo>) {
     this.clientData.next({
       ...this.clientData.value,
@@ -45,22 +44,10 @@ export class ClientService {
   }
 
   // Appel API pour sauvegarder les données client
-  async saveClientData(): Promise<any> {
-    try {
-      console.log("Envoi des données au serveur:", this.clientData.value);
-      console.log("URL de l'API:", `${environment.apiUrl}/api/customers`);
-      
-      const response = await this.http.post(
-        `${environment.apiUrl}/api/customers`,
-        this.clientData.value
-      ).toPromise();
-      
-      console.log('Client enregistré avec succès:', response);
-      return response;
-    } catch (error) {
-      console.error('Erreur lors de l\'enregistrement du client:', error);
-      throw error;
-    }
+  saveClientData(): Observable<any> {
+    const currentData = this.getClientData();
+    const apiUrl = `${environment.apiUrl}/api/customers`;
+
+    return this.http.post<any[]>(apiUrl, currentData);
   }
 }
-
