@@ -1,3 +1,25 @@
 {
-    "svg.preview.background": "editor"
+    "svg.preview.background": "editor",
+    "files.exclude": {
+        "**/var/cache": true,
+        "**/var/log": true,
+        "**/var/sessions": true,
+        "**/api/var": true,
+        "**/.docker": true,
+        "**/vendor": true,
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true
+    },
+    "files.watcherExclude": {
+        "**/var/cache/**": true,
+        "**/var/log/**": true,
+        "**/var/sessions/**": true,
+        "**/api/var/**": true,
+        "**/.docker/**": true,
+        "**/vendor/**": true
+    }
 }

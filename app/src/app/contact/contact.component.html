@@ -77,6 +77,21 @@
             </div>
           </div>
 
+          <div class="form-group">
+            <label for="address">Adresse *</label>
+            <textarea
+              type="address"
+              id="address"
+              formControlName="address"
+              required
+              [class.invalid]="isFieldInvalid('address')"
+            ></textarea>
+            <div class="error-message">
+              <p *ngIf="isFieldInvalid('address')">
+                {{ getErrorMessage("address") }}
+              </p>
+            </div>
+          </div>
 
           <button type="submit" class="btn-primary" [disabled]="isSubmitting">
             <span *ngIf="!isSubmitting">Commencer ma simulation</span>

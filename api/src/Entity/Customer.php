@@ -25,6 +25,9 @@ class Customer
     #[ORM\Column(length: 12)]
     private ?string $phoneNumber = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $address = null;
+
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
@@ -84,6 +87,18 @@ class Customer
     public function setPhoneNumber(string $phoneNumber): static
     {
         $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): static
+    {
+        $this->address = $address;
 
         return $this;
     }

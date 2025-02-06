@@ -1,0 +1,4 @@
+# Ignore Symfony cache files in git diff
+/api/var/* -diff
+/var/* -diff
+*.cache -diff

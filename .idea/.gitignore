@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Cache files
+/api/var/
+/var/
+.idea/
+# Symfony cache
+**/var/cache/
+**/var/log/
+**/var/sessions/
+# Docker
+.docker/

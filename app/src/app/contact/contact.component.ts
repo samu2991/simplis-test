@@ -26,6 +26,7 @@ export class ContactComponent {
       lastName: ['', [Validators.required, Validators.minLength(2)]],
       phoneNumber: ['', [Validators.required, Validators.pattern(/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/)]],
       email: ['', [Validators.required, Validators.email]],
+      address: ['', [Validators.required]]
     });
   }
 
