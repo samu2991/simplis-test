@@ -8,6 +8,8 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
+        '/api/customers' => [[['_route' => 'api_create_customer', '_controller' => 'App\\Controller\\CustomerController::createCustomer'], null, ['POST' => 0, 'OPTIONS' => 1], null, false, false, null]],
+        '/api/match-products' => [[['_route' => 'app_match_products', '_controller' => 'App\\Controller\\ProductMatchingController::matchProducts'], null, ['POST' => 0], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

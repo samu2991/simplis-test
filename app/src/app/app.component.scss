@@ -67,8 +67,8 @@
 
 .main {
   flex: 1;
-  margin-top: 140px;
-  background-color: aliceblue;
+  padding-top: 140px;
+  background: linear-gradient(157deg, rgb(22 204 119 / 13%), rgba(81, 69, 255, 0.21));
   min-height: calc(100vh - 140px - 150px);
 }
 
@@ -81,7 +81,6 @@
   align-items: center;
   justify-content: space-between;
   min-height: 150px;
-  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .footer__socialNetworks {
@@ -91,13 +90,11 @@
 
 .footer__socialNetwork {
   padding: 0.5em 1em;
-  filter: invert(45%) sepia(84%) saturate(7152%) hue-rotate(240deg)
-    brightness(99%) contrast(104%);
+  filter: brightness(0) saturate(100%) invert(68%) sepia(30%) saturate(473%) hue-rotate(203deg) brightness(108%) contrast(101%);
 }
 
 .footer__socialNetwork:hover {
-  filter: invert(61%) sepia(29%) saturate(3048%) hue-rotate(107deg)
-    brightness(101%) contrast(83%);
+  filter: brightness(0) saturate(100%) invert(97%) sepia(7%) saturate(594%) hue-rotate(82deg) brightness(94%) contrast(98%);
 }
 
 .footer__iconSize {

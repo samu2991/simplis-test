@@ -1,7 +1,6 @@
 @use "../../styles/variables" as *;
 
 .contact {
-  background: linear-gradient(157deg, #16cc777a, #5145ffba);
 }
 
 .contact__content {
@@ -18,6 +17,118 @@
   right: 30px;
   font-size: 0.8em;
   font-style: italic;
+}
+
+.contact__image-container {
+  position: relative;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  .contact__person {
+    position: relative;
+    z-index: 2;
+    max-height: 38em;
+    width: 100%;
+  }
+}
+
+.decorative-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+  z-index: 1;
+  animation: float 6s ease-in-out infinite;
+}
+
+.decorative-shape-no-move {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.shape-1 {
+  width: 38%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, $primary-color 20%, transparent 80%);
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  opacity: 0.4;
+}
+
+.shape-2 {
+  width: 25%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #16cc77 30%, transparent 70%);
+  top: 20%;
+  right: 15%;
+  animation-delay: 1s;
+  border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+  opacity: 0.35;
+}
+
+.shape-3 {
+  width: 20%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, $primary-color 40%, #16cc77 90%);
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 2s;
+  border-radius: 40% 60% 60% 40% / 70% 30% 70% 30%;
+  opacity: 0.25;
+}
+
+.shape-4 {
+  width: 32%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #16cc77 30%, $primary-color 80%);
+  bottom: 15%;
+  right: 10%;
+  animation-delay: 3s;
+  border-radius: 60% 40% 30% 70% / 40% 50% 60% 50%;
+  opacity: 0.3;
+}
+
+// .shape-dots {
+//   width: 100px;
+//   height: 100px;
+//   background: radial-gradient(circle at center, $primary-color 2px, transparent 4px) 0 0 / 15px 15px;
+//   top: 15%;
+//   left: 30%;
+//   opacity: 0.2;
+//   border-radius: 0;
+// }
+
+// .shape-line {
+//   width: 150px;
+//   height: 3px;
+//   background: linear-gradient(90deg, transparent, $primary-color, transparent);
+//   top: 60%;
+//   right: 20%;
+//   animation: pulse 4s ease-in-out infinite;
+//   opacity: 0.3;
+//   border-radius: 0;
+//   transform: rotate(-45deg);
+// }
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
 }
 
 .contact__person {
@@ -168,6 +279,7 @@
   font-size: 18px;
   cursor: pointer;
   transition: background-color 0.3s;
+  width: 100%;
 }
 
 .contact .btn-primary:hover {
@@ -176,47 +288,6 @@
 
 .contact .btn-primary:active {
   background: $primary-light;
-}
-
-@media (max-width: 950px) {
-  .contact__person {
-    max-height: 15em;
-  }
-
-  .contact__features {
-    grid-template-columns: 1fr;
-  }
-
-  .contact__content {
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
-  }
-
-  .contact__header .contact__logo {
-    max-width: 170px;
-    height: auto;
-    margin: 15px;
-  }
-
-  .contact__tagline {
-    font-size: 1em;
-  }
-
-  .contactForm {
-    padding: 20px;
-    margin: 10px;
-  }
-}
-
-@media (max-width: 768px) {
-  .features {
-    padding: 2rem 1rem;
-
-    &__grid {
-      grid-template-columns: 1fr;
-    }
-  }
 }
 
 @keyframes slideInFromRight {
@@ -248,3 +319,68 @@
 .contactForm {
   animation: slideInFromTop 1s ease-out forwards;
 }
+
+
+@media (max-width: 950px) {
+
+  .contact__person {
+    animation: slideInFromTop 1s ease-out forwards;
+  }
+  
+  .contactForm {
+    animation: none  1s ease-out forwards;
+  }
+
+  .contact__image-container {
+    width: 30%;
+    max-height: 300px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+
+
+  .contact__person {
+    max-height: 15em;
+  }
+
+  .contact__features {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__content {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  .contact__header .contact__logo {
+    max-width: 170px;
+    height: auto;
+    margin: 15px;
+  }
+
+  .contact__tagline {
+    font-size: 1em;
+  }
+
+  .contactForm {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .contact_information {
+    bottom: -20px;
+    right: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .features {
+    padding: 2rem 1rem;
+
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+

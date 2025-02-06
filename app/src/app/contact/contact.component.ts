@@ -42,13 +42,13 @@ export class ContactComponent {
     const control = this.contactForm.get(fieldName);
     if (control && control.errors) {
       if (control.errors['required']) {
-        return `Le champ ${fieldName} est obligatoire`;
+        return `Le champ est obligatoire`;
       }
       if (control.errors['email']) {
         return 'Format d\'email invalide';
       }
       if (control.errors['minlength']) {
-        return `Le ${fieldName} doit contenir au moins ${control.errors['minlength'].requiredLength} caractères`;
+        return `Le champ doit contenir au moins ${control.errors['minlength'].requiredLength} caractères`;
       }
       if (control.errors['pattern']) {
         return 'Format de téléphone invalide';

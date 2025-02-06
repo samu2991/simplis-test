@@ -1,6 +1,6 @@
 <div class="step-container">
   <div class="content">
-    <h1>Sélectionnez votre assurance</h1>
+    <h1 *ngIf="!loading && !error && products.length > 0" >Sélectionnez votre assurance</h1>
     
     <!-- Loading spinner -->
     <div class="loading-container" *ngIf="loading">
@@ -41,7 +41,14 @@
 
     <!-- No products found -->
     <div class="no-products" *ngIf="!loading && !error && products.length === 0">
-      <p>Aucun produit ne correspond à vos critères.</p>
+      <div class="no-products-card">
+        <img src="./assets/shoes.svg" alt="Chaussure à talon" />
+        <h3>Vous n'avez pas encore trouvé chaussure à votre pied ?</h3>
+        <p>Ne vous inquiétez pas, nous sommes là pour vous aider à trouver l'assurance parfaite pour votre activité.</p>
+        <div class="contact-info">
+          Un conseiller va vous recontacter rapidement pour vous accompagner dans votre choix.
+        </div>
+      </div>
     </div>
   </div>
 </div>
