@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+// import { HttpClient } from '@angular/common/http';
+// import { environment } from '../../environments/environment';
 
 export interface ClientInfo {
   firstName: string;
@@ -29,9 +29,9 @@ export class ClientService {
 
   clientData$ = this.clientData.asObservable();
 
-  constructor(private http: HttpClient) {
-    console.log('ClientService initialized');
-  }
+  // constructor(private http: HttpClient) {
+  //   console.log('ClientService initialized');
+  // }
 
   updateClientData(data: Partial<ClientInfo>) {
     this.clientData.next({

@@ -5,10 +5,12 @@
   flex-direction: row;
   padding: 60px 0;
   background-color: aliceblue;
+  max-width: 1700px;
+  margin: auto;
 }
 
 .contact__person {
-  max-height: 47em;
+  max-height: 38em;
   width: 50%;
 }
 
@@ -104,6 +106,10 @@
 }
 
 @media (max-width: 950px) {
+  .contact__person {
+    max-height: 15em;
+  }
+
   .contact__features {
     grid-template-columns: 1fr;
   }
