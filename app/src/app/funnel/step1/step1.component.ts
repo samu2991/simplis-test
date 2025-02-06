@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ClientService } from '../../services/client.service';
+import { FunnelService } from '../../services/funnel.service';
 
 @Component({
   selector: 'app-step1',
@@ -11,33 +11,23 @@ import { ClientService } from '../../services/client.service';
   templateUrl: './step1.component.html',
   styleUrls: ['./step1.component.scss']
 })
-export class Step1Component implements OnInit {
+export class Step1Component {
   step1Form: FormGroup;
   submitted = false;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private clientService: ClientService
+    private funnelService: FunnelService
   ) {
     this.step1Form = this.fb.group({
       isAutoEntrepreneur: [null, Validators.required],
-      dateNaissance: ['', Validators.required],
-      activite: ['', [Validators.required]]
+      isFranceOnly: [null, Validators.required],
+      activity: ['', [Validators.required]],
+      projectedTurnover: ['', [Validators.required]]
     });
   }
 
-  ngOnInit() {
-    // Charger les données existantes si disponibles
-    const clientData = this.clientService.getClientData();
-    if (clientData.isAutoEntrepreneur !== undefined) {
-      this.step1Form.patchValue({
-        isAutoEntrepreneur: clientData.isAutoEntrepreneur,
-        dateNaissance: clientData.dateNaissance,
-        adresse: clientData.adresse
-      });
-    }
-  }
 
   async onSubmit() {
     this.submitted = true;
@@ -49,12 +39,11 @@ export class Step1Component implements OnInit {
     });
 
     if (this.step1Form.valid) {
-      // Mettre à jour les données du client
-      this.clientService.updateClientData(this.step1Form.value);
-      await this.clientService.saveClientData();
-      
+
+      console.log(this.step1Form.value)
+
       // Naviguer vers l'étape suivante
-      this.router.navigate(['/funnel/step2']);
+      //this.router.navigate(['/funnel/step2']);
     }
   }
 

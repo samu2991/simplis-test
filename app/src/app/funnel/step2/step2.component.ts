@@ -26,22 +26,10 @@ export class Step2Component implements OnInit {
 
   ngOnInit() {
     const clientData = this.clientService.getClientData();
-    if (clientData.chiffreAffaire) {
+    if (clientData.projectedTurnover) {
       this.step2Form.patchValue({
-        chiffreAffaire: clientData.chiffreAffaire
+        chiffreAffaire: clientData.projectedTurnover
       });
-    }
-  }
-
-  onPrevious() {
-    this.router.navigate(['/funnel/step1']);
-  }
-
-  async onSubmit() {
-    if (this.step2Form.valid) {
-      this.clientService.updateClientData(this.step2Form.value);
-      await this.clientService.saveClientData();
-      this.router.navigate(['/funnel/step3']);
     }
   }
 }

@@ -23,14 +23,22 @@
     <h2>Informations complémentaires</h2>
     <form [formGroup]="step1Form" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label>Êtes-vous auto-entrepreneur ?</label>
+        <label>Êtes-vous auto-entrepreneur ? *</label>
         <div class="radio-group">
           <label>
-            <input type="radio" formControlName="isAutoEntrepreneur" [value]="true">
+            <input
+              type="radio"
+              formControlName="isAutoEntrepreneur"
+              [value]="true"
+            />
             Oui
           </label>
           <label>
-            <input type="radio" formControlName="isAutoEntrepreneur" [value]="false">
+            <input
+              type="radio"
+              formControlName="isAutoEntrepreneur"
+              [value]="false"
+            />
             Non
           </label>
         </div>
@@ -38,54 +46,93 @@
           Veuillez sélectionner une option
         </div>
       </div>
-  
-      <div class="form-group">
-        <label for="dateNaissance">Date de naissance *</label>
-        <input type="date" id="dateNaissance" formControlName="dateNaissance" required 
-               [class.invalid]="isFieldInvalid('dateNaissance')">
-        <div class="error-message" *ngIf="isFieldInvalid('dateNaissance')">
-          La date de naissance est requise
-        </div>
-      </div>
-  
-      <div class="form-group">
-        <label for="adresse">Adresse *</label>
-        <textarea id="adresse" formControlName="adresse" rows="3" required
-                  [class.invalid]="isFieldInvalid('adresse')"></textarea>
-        <div class="error-message" *ngIf="isFieldInvalid('adresse')">
-          L'adresse est requise
-        </div>
-      </div>
 
       <div class="form-group">
-        <label for="activite">Votre activité *</label>
+        <label for="activity">Votre activité *</label>
         <select
-          id="activite"
-          formControlName="activite"
+          id="activity"
+          formControlName="activity"
           required
-          [class.invalid]="isFieldInvalid('activite')"
+          [class.invalid]="isFieldInvalid('activity')"
         >
           <option value="">Sélectionnez votre activité</option>
-          <option value="commerce">Commerce d'objets d'art</option>
-          <option value="decoration">
+          <option value="1">Commerce d'objets d'art</option>
+          <option value="2">
             Créations de décorations en fleurs artificielles
           </option>
-          <option value="gravure">Gravure sur métaux</option>
-          <option value="guide">Guide touristique</option>
-          <option value="communication">
-            Agence et conseil en communication
+          <option value="3">Cruciverbiste professionnel</option>
+          <option value="4">Enlumineur</option>
+          <option value="5">Gravure sur métaux</option>
+          <option value="6">Guide touristique</option>
+          <option value="7">
+            Organisation d'événements pour compte d'autrui hors évènements
+            familiaux et sportifs
+          </option>
+          <option value="8">Réparation d'horloges</option>
+          <option value="9">Sociologue</option>
+          <option value="10">
+            Agence et conseil en communication, Relations publiques avec
+            organisation d'évènement
           </option>
         </select>
         <div class="error-message">
-          <p *ngIf="isFieldInvalid('activite')">
+          <p *ngIf="isFieldInvalid('activity')">
             Veuillez sélectionner une option
           </p>
         </div>
       </div>
-  
+
+      <div class="form-group">
+        <label for="projectedTurnover">Chiffre d'affaires * </label>
+        <select
+          id="projectedTurnover"
+          formControlName="projectedTurnover"
+          required
+          [class.invalid]="isFieldInvalid('projectedTurnover')"
+        >
+          <option value="">Sélectionnez votre Chiffre d'affaires</option>
+          <option value="150 000">1 € - 150 000 €</option>
+          <option value="500 000">150 000 € - 500 000 €</option>
+          <option value="1 000 000">500 000 € - 1 000 000 €</option>
+          <option value="2 000 000">1 000 000 € - 2 000 000 €</option>
+          <option value="5 000 000">2 000 000 € - 5 000 000€</option>
+        </select>
+        <div class="error-message">
+          <p *ngIf="isFieldInvalid('projectedTurnover')">
+            Veuillez sélectionner une option
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Exercer vous uniquement en France ? *</label>
+        <div class="radio-group">
+          <label>
+            <input
+              type="radio"
+              formControlName="isFranceOnly"
+              [value]="'france'"
+            />
+            Oui
+          </label>
+          <label>
+            <input
+              type="radio"
+              formControlName="isFranceOnly"
+              [value]="'world'"
+            />
+            Non
+          </label>
+        </div>
+        <div class="error-message" *ngIf="isFieldInvalid('isFranceOnly')">
+          Veuillez sélectionner une option
+        </div>
+      </div>
+
       <button type="submit" class="btn-primary" [disabled]="!step1Form.valid">
         Continuer
       </button>
     </form>
+    <p class="step_information">* champs obligatoires</p>
   </div>
 </div>

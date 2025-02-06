@@ -9,12 +9,10 @@ export interface ClientInfo {
   phoneNumber: string;
   email: string;
   address: string;
-  activite?: string;
+  isFranceOnly?: boolean;
+  activity?: string;
+  projectedTurnover?: boolean;
   isAutoEntrepreneur?: boolean;
-  dateNaissance?: string;
-  adresse?: string;
-  chiffreAffaire?: string;
-  selectedPlan?: string;
 }
 
 @Injectable({
@@ -64,14 +62,5 @@ export class ClientService {
       throw error;
     }
   }
-
-
-      // Simuler un appel API pour sauvegarder les données
-  // saveClientData(): Promise<void> {
-  //   return new Promise((resolve) => {
-  //     console.log('Saving client data:', this.clientData.value);
-  //     // Ici appel réel API
-  //     setTimeout(resolve, 1000);
-  //   });
 }
 

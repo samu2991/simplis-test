@@ -4,9 +4,9 @@
   display: flex;
   flex-direction: row;
   padding: 60px 0;
-  background-color: aliceblue;
   max-width: 1700px;
   margin: auto;
+  background: linear-gradient(157deg, #16cc777a, #5145ffba);
 }
 
 .contact__person {
@@ -134,4 +134,34 @@
     padding: 20px;
     margin: 10px;
   }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.contact__person {
+  animation: slideInFromRight 1s ease-out forwards;
+}
+
+.contactForm {
+  animation: slideInFromTop 1s ease-out forwards;
 }
